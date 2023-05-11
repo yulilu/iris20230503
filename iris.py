@@ -37,9 +37,11 @@ st.write('## Input Value')
 # インプットデータ（1行のデータフレーム）
 value_df = pd.DataFrame([],columns=['data','sepal length (cm)','petal length (cm)'])
 print('★1',len(value_df))
-record = pd.Series(['data',sepalValue, petalValue], index=value_df.columns)
+#record = pd.Series(['data',sepalValue, petalValue], index=value_df.columns)
+record = pd.DataFrame({'data':'data', 'sepal length (cm)':sepalValue, 'petal length (cm)':petalValue}, index=[0])
 print('★2',len(record))
-value_df = value_df.append(record, ignore_index=True)
+#value_df = value_df.append(record, ignore_index=True)
+value_df = pd.concat([value_df, record], ignore_index=True)
 value_df.set_index('data',inplace=True)
 
 # 入力値の値
